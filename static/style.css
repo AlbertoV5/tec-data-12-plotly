@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+.jumbotron {
+    background-image: url("bg2.jpg");
+}
+
+body {
+    background-color: white;
+    font-family: "Roboto";
+}
+
+.container {
+    background-color: ghostwhite; 
+}
+
+#sample-metadata {
+    font-family: "Roboto";
+    font-weight: 700;
+}
+
+#intro {
+    font-family: "Roboto";
+    font-weight: 400;
+    margin: 12px;
+    margin-bottom: 24px;
+}
+
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    z-index: 1000;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px; 
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: whitesmoke;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: lightblue;
+    color: black;
+}
+
+.container {
+    margin-top: 30px; 
+}
+
+.desc {
+    padding: 4px;
+    padding-top:12px;
+    padding-bottom: 12px;
+    font-family: "Roboto";
+    font-style: italic;
+}
