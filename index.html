@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bellybutton Biodiversity</title>
+  <link rel="stylesheet" href="static/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="topnav">
+    <a href="#top">Top</a>
+    <a href="#bar">Bar Chart</a>
+    <a href="#bubble">Bubble Chart</a>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center" id = "top">
+        <h1>Belly Button Biodiversity Dashboard</h1>
+        <p>Use the interactive charts below to explore the dataset</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" id="intro">
+      <p>
+      The belly button is one of the habitats closest to us, and yet it remains relatively unexplored. 
+      In January 2011, we launched Belly Button Biodiversity to investigate the microbes inhabiting our navels and the factors that might influence the microscopic life calling this protected, moist patch of skin home. 
+      In addition to inspiring scientific curiosity, Belly Button Biodiversity inspired conversations about the beneficial roles microbes play in our daily lives.
+        <a href="http://robdunnlab.com/projects/belly-button-biodiversity/#:~:text=In%20January%202011%2C%20we%20launched,moist%20patch%20of%20skin%20home.">
+          Source: robdunnlab.
+        </a>
+      </p>
+      <p>
+        Select a <b>Test Subject ID</b> below to explore the biodiversity!
+      </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-10 col-md-2">
+        <div class="well">
+          <h5>Test Subject ID No.:</h5>
+          <!-- <select id="selDataset"></select> -->
+          <select id="selDataset" onchange="optionChanged(this.value)"></select>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Demographic Info</h3>
+          </div>
+          <div id="sample-metadata" class="panel-body"></div>
+        </div>
+      </div>
+      <div class="col-xs-10 col-md-5">
+        <div id="bar"></div>
+        <p class="desc">This char shows how many different bacteria per culture exist per sample.</p>
+      </div>
+      <div class="col-xs-10 col-md-5">
+        <div id="gauge"></div>
+        <p class="desc">The gauge represents the amount of times a week the person washes their belly button.</p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-xs-12 col-md-12">
+        <div id="bubble"></div>
+        <p class="desc">This bubble chart expands on the bar char from before. Where the size of the bubble is the amount of bacteria per culture.</p>
+      </div>
+    </div>
+    <hr>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="./static/charts.js"></script>
+</body>
+</html>

@@ -1,8 +1,10 @@
+SAMPLES = "static/samples.json"
+
 function init() {
     // Grab a reference to the dropdown select element
     var selector = d3.select("#selDataset");
     // Use the list of sample names to populate the select options
-    d3.json("samples.json").then((data) => {
+    d3.json(SAMPLES).then((data) => {
         var sampleNames = data.names;
         sampleNames.forEach((sample) => {
             selector
@@ -27,7 +29,7 @@ function optionChanged(newSample) {
   
 // Demographics Panel 
 function buildMetadata(sample) {
-    d3.json("samples.json").then((data) => {
+    d3.json(SAMPLES).then((data) => {
         var metadata = data.metadata;
         // Filter the data for the object with the desired sample number
         var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
@@ -47,7 +49,7 @@ function buildMetadata(sample) {
 // 1. Create the buildCharts function.
 function buildCharts(sample) {
     // 2. Use d3.json to load and retrieve the samples.json file 
-    d3.json("samples.json").then((data) => {
+    d3.json(SAMPLES).then((data) => {
         // 3. Create a variable that holds the samples array. 
         let samples = data.samples;
         // 4. Create a variable that filters the samples for the object with the desired sample number.
@@ -108,7 +110,47 @@ function buildCharts(sample) {
         // 3. Use Plotly to plot the data with the layout.
         Plotly.newPlot("bubble", bubbleData, bubbleLayout); 
         // DELIVERABLE 3
-        
+
+        // 1. Create a variable that filters the metadata array for the object with the desired sample number.
+        // 2. Create a variable that holds the first sample in the metadata array.
+        var metadata = data.metadata;
+        var metadata_array = metadata.filter(sampleObj => sampleObj.id == sample);
+        var result = metadata_array[0];
+        // 3. Create a variable that holds the washing frequency.
+        let wfreq = parseFloat(result.wfreq);
+        // 4. Create the trace for the gauge chart.
+        var gaugeData = [
+            {
+                domain: { x: [0, 1], y: [0, 1] },
+                value: wfreq,
+                type: "indicator",
+                mode: "gauge+number",
+                ticklabelstep: 2,
+                gauge: {
+                    axis: { range: [null, 10], dtick: 2},
+                    bar: { color: "black" },
+                    steps: [
+                      { range: [0, 2], color: "red" },
+                      { range: [2, 4], color: "orange" },
+                      { range: [4, 6], color: "yellow" },
+                      { range: [6, 8], color: "lightgreen" },
+                      { range: [8, 10], color: "darkgreen" }
+                    ],
+                    threshold: {
+                      line: { color: "yellow", width: 2},
+                      thickness: 0.75,
+                      value: 10
+                    }
+                }
+            }
+        ];
+        // 5. Create the layout for the gauge chart.
+        var gaugeLayout = {
+            title:`<br><b>Belly Button Washing Frequency</b><br>Scrubs per Week`,
+            margin: { t: 10, r: 30, l: 30, b: 10 },
+        };
+        // 6. Use Plotly to plot the gauge data and layout.
+        Plotly.newPlot("gauge", gaugeData, gaugeLayout);
     });
 }
   
