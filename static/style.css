@@ -18,6 +18,11 @@ body {
     font-weight: 700;
 }
 
+hr {
+    background-color: gray; 
+    color: gray;
+}
+
 #intro {
     font-family: "Roboto";
     font-weight: 400;
