@@ -108,47 +108,7 @@ function buildCharts(sample) {
         // 3. Use Plotly to plot the data with the layout.
         Plotly.newPlot("bubble", bubbleData, bubbleLayout); 
         // DELIVERABLE 3
-
-        // 1. Create a variable that filters the metadata array for the object with the desired sample number.
-        // 2. Create a variable that holds the first sample in the metadata array.
-        var metadata = data.metadata;
-        var metadata_array = metadata.filter(sampleObj => sampleObj.id == sample);
-        var result = metadata_array[0];
-        // 3. Create a variable that holds the washing frequency.
-        let wfreq = parseFloat(result.wfreq);
-        // 4. Create the trace for the gauge chart.
-        var gaugeData = [
-            {
-                domain: { x: [0, 1], y: [0, 1] },
-                value: wfreq,
-                type: "indicator",
-                mode: "gauge+number",
-                ticklabelstep: 2,
-                gauge: {
-                    axis: { range: [null, 10], dtick: 2},
-                    bar: { color: "black" },
-                    steps: [
-                      { range: [0, 2], color: "red" },
-                      { range: [2, 4], color: "orange" },
-                      { range: [4, 6], color: "yellow" },
-                      { range: [6, 8], color: "lightgreen" },
-                      { range: [8, 10], color: "darkgreen" }
-                    ],
-                    threshold: {
-                      line: { color: "yellow", width: 2},
-                      thickness: 0.75,
-                      value: 10
-                    }
-                }
-            }
-        ];
-        // 5. Create the layout for the gauge chart.
-        var gaugeLayout = {
-            title:`<br><b>Belly Button Washing Frequency</b><br>Scrubs per Week`,
-            margin: { t: 10, r: 10, l: 10, b: 10 },
-        };
-        // 6. Use Plotly to plot the gauge data and layout.
-        Plotly.newPlot("gauge", gaugeData, gaugeLayout);
+        
     });
 }
   
